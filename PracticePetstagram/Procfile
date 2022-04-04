@@ -1,1 +1,1 @@
-web: gunicorn PracticePetstagram.wsgi
+web: gunicorn --pythonpath PracticePetstagram PracticePetstagram.wsgi
