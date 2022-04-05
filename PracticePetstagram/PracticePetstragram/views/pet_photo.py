@@ -21,6 +21,9 @@ class PetPhotoCreateView(views.CreateView):
     fields = ('photo', 'description', 'tagged_pets')
     success_url = reverse_lazy('dashboard')
 
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
 
 class PetPhotoEditView(views.UpdateView):

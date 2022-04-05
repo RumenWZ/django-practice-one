@@ -15,9 +15,4 @@ urlpatterns = (
 
     path('photo/details/<int:pk>/', PetPhotoDetailsView.as_view(), name='photo details'),
     path('photo/add/', PetPhotoCreateView.as_view(), name='photo create'),
-
-    # path('profile/', TemplateView.as_view(), name='profile'),
-    # path('profile/create', TemplateView.as_view(template_name='profile_create.html'), name='profile create'),
-
-    # path('photo/<int:pk>', TemplateView.as_view(), name='photo'),
 )

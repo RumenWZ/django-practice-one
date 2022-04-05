@@ -3,7 +3,9 @@ from django.urls import reverse_lazy
 from django.views import generic as views
 
 # Create your views here.
+from PracticePetstragram.accounts.models import Profile
 from PracticePetstragram.web.forms import CreateProfileForm
+from PracticePetstragram.web.models import Pet, PetPhoto
 
 
 class HomeView(views.TemplateView):
@@ -23,9 +25,4 @@ class HomeView(views.TemplateView):
 class DashboardView(views.TemplateView):
     template_name = 'dashboard.html'
 
-
-class CreateProfileView(views.FormView):
-    form_class = CreateProfileForm
-    template_name = 'profile_create.html'
-    success_url = reverse_lazy('dashboard')
 
