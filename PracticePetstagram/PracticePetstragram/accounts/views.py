@@ -54,3 +54,6 @@ class ProfileDetailsView(views.DetailView):
         })
 
         return context
+
+class ChangePasswordView(auth_views.PasswordChangeView):
+    template_name = 'accounts/change_password.html'
