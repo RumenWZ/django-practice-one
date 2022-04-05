@@ -22,7 +22,9 @@ class HomeView(views.TemplateView):
         return super().dispatch(request, *args, **kwargs)
 
 
-class DashboardView(views.TemplateView):
+class DashboardView(views.ListView):
+    model = PetPhoto
     template_name = 'dashboard.html'
+    context_object_name = 'pet_photos'
 
 
