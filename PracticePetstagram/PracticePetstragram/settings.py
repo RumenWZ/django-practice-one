@@ -83,13 +83,26 @@ WSGI_APPLICATION = 'PracticePetstragram.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+#Testing DB
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'petstagram_db',
+#         'USER': 'postgres',
+#         'PASSWORD': '123456w',
+#         'HOST': '127.0.0.1',
+#         'PORT': '5432',
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'petstagram_db',
-        'USER': 'postgres',
-        'PASSWORD': '123456w',
-        'HOST': '127.0.0.1',
+        'NAME': 'dcjosu7ag57s6q',
+        'USER': 'ekdoxkpmwnjoic',
+        'PASSWORD': 'a674a6decc3e34fcc284943a89bd420ed5ccc142ea1c29dc982530acfb333feb',
+        'HOST': 'ec2-52-212-228-71.eu-west-1.compute.amazonaws.com',
         'PORT': '5432',
     }
 }
