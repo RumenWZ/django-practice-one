@@ -28,8 +28,8 @@ SECRET_KEY = 'django-insecure-m5!w8x04466=6pha55=#&cn0u!8k(202au)w58g0&#vu$7!ga9
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '127.0.0.1',
     'localhost',
+    '127.0.0.1',
     'python-petstagram-test.herokuapp.com',
 ]
 
@@ -175,5 +175,3 @@ STATICFILES_DIRS = (
 )
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressManifestStaticFilesStorage'
-
-DISABLE_COLLECTSTATIC=1
