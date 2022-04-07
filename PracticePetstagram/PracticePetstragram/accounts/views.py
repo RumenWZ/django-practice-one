@@ -55,5 +55,12 @@ class ProfileDetailsView(views.DetailView):
 
         return context
 
+
 class ChangePasswordView(auth_views.PasswordChangeView):
     template_name = 'accounts/change_password.html'
+
+
+class ProfileDeleteView(views.DeleteView):
+    model = Profile
+    template_name = 'profile_delete.html'
+    success_url = reverse_lazy('dashboard')

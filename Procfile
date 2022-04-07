@@ -1,1 +1,2 @@
-web: gunicorn --pythonpath PracticePetstagram PracticePetstagram.wsgi
+web: gunicorn --pythonpath PracticePetstagram PracticePetstragram.wsgi
+release: python PracticePetstagram/manage.py migrate

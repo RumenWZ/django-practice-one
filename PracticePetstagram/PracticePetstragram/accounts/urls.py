@@ -2,7 +2,7 @@ from django.urls import path, reverse_lazy
 from django.views.generic import RedirectView
 
 from PracticePetstragram.accounts.views import UserLoginView, UserLogoutView, UserRegisterView, ProfileDetailsView, \
-    ChangePasswordView
+    ChangePasswordView, ProfileDeleteView
 
 urlpatterns = (
     path('login/', UserLoginView.as_view(), name='login user'),
@@ -12,4 +12,5 @@ urlpatterns = (
     path('<int:pk>/', ProfileDetailsView.as_view(), name='profile details'),
     path('edit-password/', ChangePasswordView.as_view(), name='edit password'),
     path('password_change_done/', RedirectView.as_view(url=reverse_lazy('dashboard')), name='password change done'),
+    path('delete/', ProfileDeleteView.as_view(), name='profile delete'),
 )
