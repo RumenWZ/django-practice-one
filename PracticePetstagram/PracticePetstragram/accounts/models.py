@@ -25,7 +25,7 @@ class PetstagramUser(auth_models.AbstractBaseUser, auth_models.PermissionsMixin)
 
     USERNAME_FIELD = 'username'
 
-    object = PetstagramUserManager()
+    objects = PetstagramUserManager()
 
 
 class Profile(models.Model):

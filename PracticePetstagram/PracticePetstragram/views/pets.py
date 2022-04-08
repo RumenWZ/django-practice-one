@@ -1,10 +1,11 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views import generic as views
 
 from PracticePetstragram.web.forms import CreatePetForm, EditPetForm, DeletePetForm
 
 
-class CreatePetView(views.CreateView):
+class CreatePetView(LoginRequiredMixin, views.CreateView):
     form_class = CreatePetForm
     template_name = 'pet_create.html'
     success_url = reverse_lazy('dashboard')
@@ -15,11 +16,11 @@ class CreatePetView(views.CreateView):
         return kwargs
 
 
-class EditPetView(views.UpdateView):
+class EditPetView(LoginRequiredMixin, views.UpdateView):
     form_class = EditPetForm
     template_name = 'pet_edit.html'
 
 
-class DeletePetView(views.DeleteView):
+class DeletePetView(LoginRequiredMixin, views.DeleteView):
     form_class = DeletePetForm
     template_name = 'pet_delete.html'

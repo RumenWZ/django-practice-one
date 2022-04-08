@@ -2,7 +2,6 @@ import datetime
 
 from cloudinary import models as cloudinary_models
 from django.contrib.auth import get_user_model
-from django.core.validators import MinLengthValidator
 from django.db import models
 
 # Create your models here.

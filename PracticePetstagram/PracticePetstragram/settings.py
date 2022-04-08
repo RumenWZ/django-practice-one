@@ -25,13 +25,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-m5!w8x04466=6pha55=#&cn0u!8k(202au)w58g0&#vu$7!ga9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
+APP_ENVIRONMENT = os.getenv('APP_ENVIRONMENT')
 
-ALLOWED_HOSTS = [
-    'localhost',
-    '127.0.0.1',
-    'python-petstagram-test.herokuapp.com',
-]
+
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '127.0.0.1').split(" ")
+    # 'localhost',
+    # '127.0.0.1',
+    # 'python-petstagram-test.herokuapp.com',
+
 
 # Application definition
 
@@ -85,45 +87,51 @@ WSGI_APPLICATION = 'PracticePetstragram.wsgi.application'
 
 #Testing DB
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'petstagram_db',
-#         'USER': 'postgres',
-#         'PASSWORD': '123456w',
-#         'HOST': '127.0.0.1',
-#         'PORT': '5432',
-#     }
-# }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'dcjosu7ag57s6q',
-        'USER': 'ekdoxkpmwnjoic',
-        'PASSWORD': 'a674a6decc3e34fcc284943a89bd420ed5ccc142ea1c29dc982530acfb333feb',
-        'HOST': 'ec2-52-212-228-71.eu-west-1.compute.amazonaws.com',
-        'PORT': '5432',
+if APP_ENVIRONMENT == 'Production':
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'dcjosu7ag57s6q',
+            'USER': 'ekdoxkpmwnjoic',
+            'PASSWORD': 'a674a6decc3e34fcc284943a89bd420ed5ccc142ea1c29dc982530acfb333feb',
+            'HOST': 'ec2-52-212-228-71.eu-west-1.compute.amazonaws.com',
+            'PORT': '5432',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'petstagram_db',
+            'USER': 'postgres',
+            'PASSWORD': '123456w',
+            'HOST': '127.0.0.1',
+            'PORT': '5432',
+        }
+    }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
-AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
-]
+AUTH_PASSWORD_VALIDATORS = []
+
+if APP_ENVIRONMENT == 'Production':
+    AUTH_PASSWORD_VALIDATORS = [
+        {
+            'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        },
+        {
+            'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        },
+        {
+            'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        },
+        {
+            'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        },
+    ]
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
